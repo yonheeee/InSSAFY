@@ -42,6 +42,51 @@
 
 <br><br>
 
+## JAVA 프로젝트 → Maven 프로젝트
+
+### 방법
+
+#### 1. 경로
+```
+프로젝트 우클릭 → Configure → Convert to Maven Project
+```
+
+![alt text](../../Image/maven변경.png)
+
+---
+
+#### 2. 설정 창 나오면
+
+보통 이렇게 입력
+
+- **Group Id**: 회사/프로젝트 그룹
+예: `com.example`
+- **Artifact Id**: 프로젝트 이름
+자동으로 채워짐
+- **Version**: 기본값 사용 (`1.0-SNAPSHOT`)
+
+
+---
+
+### 3. 완료되면 변화
+
+`pom.xml` 생성됨
+
+ `Maven Dependencies` 생김
+
+ 프로젝트가 Maven 관리로 바뀜
+
+---
+
+### 이후 꼭 해야할 것
+
+### 4. Maven 동기화
+
+```
+프로젝트 우클릭 → Maven → Update Project
+```
+
+<br><br>
 
 ## Maven Repository 사용
 
