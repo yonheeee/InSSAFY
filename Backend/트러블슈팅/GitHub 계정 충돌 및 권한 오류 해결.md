@@ -22,8 +22,8 @@ fatal: unable to access 'https://github.com/yonheeee/InSSAFY/': The requested UR
 ```
 ---
 
-2. **목록에서 url 찾기** 
-![alt text](../../Image/자격증명.png)
+2. **목록에서 url 찾기** <br>
+![alt text](../../Image/자격증명.png)<br>
 해당하는 url 항목을 찾아 **제거**
 
 ---
