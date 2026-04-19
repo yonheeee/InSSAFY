@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자동차정보사이트</title>
+<style>
+label {
+	display: inline-block;
+	width: 80px;
+}
+</style>
+</head>
+<body>
+	<h1>자동차 관리</h1>
+	<form action="main" action="post">
+		<fieldset>
+			<legend>자동차 정보 입력</legend>
+			<input type="hidden" name="action" value="regist"> <label
+				for="VIN">차량 번호</label> <input type="text" id="VIN" name="VIN"
+				required maxlength="17" required placeholder="17자리 차량등록번호"><br>
+			<label for="modelName">모델 이름</label> <input type="text"
+				id="modelName" name="modelName" required maxlength="17" required
+				placeholder="예: 아반떼"><br> <label for="color">색상</label>
+			<input type="text" id="color" name="color" required
+				placeholder="예: 흰색"><br> <label for="mileage">주행
+				거리</label> <input type="text" id="mileage" name="mileage" required min="0"
+				placeholder="km"><br> <input type="submit" value="등록">
+			<input type="reset" value="초기화">
+		</fieldset>
+	</form>
+</body>
+</html>

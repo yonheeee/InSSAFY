@@ -99,3 +99,8 @@ WTP
 
 같은 웹 관련 것만 설치
 전체 Enterprise Java and Web Developer Tools를 한 번에 넣으려다 의존성 때문에 터지는 경우가 많아서, **웹 기능만 쪼개서 설치**하는 게 더 잘 될 때 있다.
+
+<br><br>
+
+## 결론
+#### STS에서는 Enterprise Java and Web Developer Tools 설치가 버전/의존성 문제로 실패하는 경우가 많으며, Eclipse EE버전을 사용하는 것이 가장 안정적인 해결방법이다.
