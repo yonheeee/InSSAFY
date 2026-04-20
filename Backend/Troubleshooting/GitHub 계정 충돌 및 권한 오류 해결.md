@@ -13,7 +13,7 @@ fatal: unable to access 'https://github.com/yonheeee/InSSAFY/': The requested UR
   
 ---
 
-#### **1. 헤결 방법**
+#### **1. 해결 방법**
 
 1. **제어판 확인**
 
@@ -32,7 +32,7 @@ fatal: unable to access 'https://github.com/yonheeee/InSSAFY/': The requested UR
 
 <br><br>
 
-#### **2. 헤결 방법**
+#### **2. 해결 방법**
 원격주소에 내 정보 강제로 넣기
 
 ```
@@ -42,7 +42,7 @@ git remote set-url origin https://github.com/사용자이름/레포이름.git
 
 <br><br>
 
-#### **3. 헤결 방법**
+#### **3. 해결 방법**
 만약 본인이 전의 계정을 계속 써야한다면
 ```
 GitHub 저장소의 Settings > Collaborators → 계정을 초대(Invite)
