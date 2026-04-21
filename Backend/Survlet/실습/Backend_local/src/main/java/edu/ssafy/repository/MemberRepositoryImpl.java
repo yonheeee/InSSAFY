@@ -28,7 +28,7 @@ public class MemberRepositoryImpl implements MemberRepository {
 
 	@Override
 	public void update(MemberDto m) throws Exception {
-		for(int i = list.size(); i == 0; i--) {
+		for(int i = 0; i < list.size(); i++) {
 			if(list.get(i).getId().equals(m.getId())) {
 				list.set(i, m);
 			}
@@ -37,9 +37,10 @@ public class MemberRepositoryImpl implements MemberRepository {
 
 	@Override
 	public void delete(String id) throws Exception {
-		for(int i = list.size(); i == 0; i--) {
+		for(int i = 0; i < list.size(); i++) {
 			if(list.get(i).getId().equals(id)) {
 				list.remove(i);
+				i--;
 			}
 		}
 		
@@ -62,7 +63,11 @@ public class MemberRepositoryImpl implements MemberRepository {
 
 	@Override
 	public MemberDto selectOne(String id) throws Exception {
-		// TODO Auto-generated method stub
+		for(MemberDto m : list) {
+			if(m.getId().equals(id)) {
+				return m;
+			}
+		}
 		return null;
 	}
 

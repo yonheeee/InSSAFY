@@ -25,7 +25,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Myjsp.jsp!!</h1>
+<h1>Myjsp.jsp</h1>
 
 </body>
 </html>

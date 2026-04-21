@@ -49,4 +49,10 @@ public class MemberServiceImpl implements MemberService{
 		return repo.select(name);
 	}
 
+	@Override
+	public MemberDto selectOne(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return repo.selectOne(id);
+	}
+
 }

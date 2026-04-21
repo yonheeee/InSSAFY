@@ -10,4 +10,5 @@ public interface MemberService {
 	public void delete(String id) throws Exception;
 	public List<MemberDto> select() throws Exception;
 	public MemberDto select(String name) throws Exception;
+	public MemberDto selectOne(String id) throws Exception;
 }

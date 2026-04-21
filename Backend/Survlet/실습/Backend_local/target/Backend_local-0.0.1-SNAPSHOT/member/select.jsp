@@ -23,7 +23,7 @@
 
             <% for(MemberDto mem : list){ %>
             <tr>
-               <td><a href="/Backend_local/member?action=detail&id=<%=mem.getId() %>"><%=mem.getId() %></a></td>
+               <a href="/Backend_Local/member?action=detail&id=<%= mem.getId() %>"><td></td>
                 <td><%= mem.getPassword() %></td>
                 <td><%= mem.getName() %></td>
                 <td><%= mem.getAge() %></td>

@@ -77,7 +77,7 @@ Servlet
 public class MyFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
         // 전처리 로직
-        chain.doFilter(request, response); // 다음 단계로 이동
+        chain.doFilter(request, response); // 다음 단계로 이동s
         // 후처리 로직
     }
 }

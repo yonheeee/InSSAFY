@@ -22,15 +22,12 @@ public class FrontMemberServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		// MemberServiceImpl Class 이름이 MeberServicImpl <- e가 빠져 있었음. 수정한 후 ServiceImpl Import해서 해결.
 		service = MemberServiceImpl.getInstance();
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		
 		process(request,response);
 	}
 	
@@ -66,6 +63,9 @@ public class FrontMemberServlet extends HttpServlet {
 				else if(action.endsWith("init")) {
 					url = "/index.jsp";
 				}
+				else if(action.endsWith("detail")) {
+					url = memberDetail(request,response);
+				}
 			}
 		}catch(Exception e) {
 			url = "/error/error.jsp";
@@ -78,11 +78,18 @@ public class FrontMemberServlet extends HttpServlet {
 		}
 	}
 	
+	private String memberDetail(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		MemberDto mem = service.selectOne(id);
+		request.setAttribute("mem",mem);
+		return "/member/detail/jsp";
+	}
+
 	private String memberSelectOne(HttpServletRequest request, HttpServletResponse response)throws Exception {
 		String name = request.getParameter("name");
 		MemberDto dto = service.select(name);
 		response.getWriter().write(dto.toString());
-		return null;
+		return "/member/detail.jsp";
 	}
 	private String memberInsert(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		//1. 파라미터 처리
@@ -104,8 +111,8 @@ public class FrontMemberServlet extends HttpServlet {
 	private String memberDelete(HttpServletRequest request, HttpServletResponse response)throws Exception {
 		String id = request.getParameter("id");
 		service.delete(id);
-		response.getWriter().write(id+" : 잘 삭제되었습니다");
-		return null;
+		//response.getWriter().write(id+" : 잘 삭제되었습니다");
+		return "redirect:/member?action=select";
 	}
 	private String memberUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String id = request.getParameter("id");
@@ -115,11 +122,11 @@ public class FrontMemberServlet extends HttpServlet {
 		String[] hobby = request.getParameterValues("hobby");
 		MemberDto dto = new MemberDto(id,password,name, age,hobby);
 		
-		//2.로직리
+		//2.로직처리
 		service.update(dto);
 		//3. 화면처리
-		response.getWriter().write(dto+"잘 수정되었습니다");
-		return null;
+		//response.getWriter().write(dto+"잘 수정되었습니다");
+		return "redirect:/member?action=select";
 	}
 	private String memberSelect(HttpServletRequest request, HttpServletResponse response)throws Exception {
 		List<MemberDto> list = service.select();
