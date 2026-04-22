@@ -71,5 +71,15 @@ public class MemberRepositoryImpl implements MemberRepository {
 		return null;
 	}
 
+	@Override
+	public MemberDto login(String id, String password) throws Exception {
+		for(MemberDto mem:list) {
+			if(mem.getId().equals(id) && mem.getPassword().equals(password)) {
+				return new MemberDto(id, null, null, null, null);
+			}
+		}
+		return null;
+	}
+
 
 }

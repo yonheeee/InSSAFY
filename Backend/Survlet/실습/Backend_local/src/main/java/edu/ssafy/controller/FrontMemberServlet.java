@@ -65,7 +65,14 @@ public class FrontMemberServlet extends HttpServlet {
 				}
 				else if(action.endsWith("detail")) {
 					url = memberDetail(request,response);
+				}else if(action.endsWith("loginform")) {
+					url = "/member/login.jsp";
+				}else if(action.endsWith("login")) {
+					url = memberLogin(request,response);
+				}else if(action.endsWith("logout")) {
+					request.getSession().invalidate();
 				}
+				
 			}
 		}catch(Exception e) {
 			url = "/error/error.jsp";
@@ -78,11 +85,26 @@ public class FrontMemberServlet extends HttpServlet {
 		}
 	}
 	
+	private String memberLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//파라미터 처리
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		if(service.login(id, password)) {
+			//로그인 처리
+			request.getSession().setAttribute("login", id);
+			return "redirect:/member?action=select";
+		}else {
+			//로그인 실패
+		}
+		request.setAttribute("msg", "로그인처리 실패");
+		return "error/error.jsp";
+	}
+
 	private String memberDetail(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("id");
 		MemberDto mem = service.selectOne(id);
 		request.setAttribute("mem",mem);
-		return "/member/detail/jsp";
+		return "/member/detail.jsp";
 	}
 
 	private String memberSelectOne(HttpServletRequest request, HttpServletResponse response)throws Exception {

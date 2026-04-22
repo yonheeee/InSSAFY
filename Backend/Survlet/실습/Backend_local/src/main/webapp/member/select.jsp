@@ -13,6 +13,7 @@
     <div align="center">
         <h1>회원조회</h1>
         <table border="1">
+        
             <tr>
                 <td>id</td>
                 <td>pw</td>

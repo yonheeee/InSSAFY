@@ -55,4 +55,12 @@ public class MemberServiceImpl implements MemberService{
 		return repo.selectOne(id);
 	}
 
+	@Override
+	public boolean login(String id, String password) throws Exception {
+		if(repo.login(id, password) != null) {
+			return true;
+		}
+		return false;
+	}
+
 }
