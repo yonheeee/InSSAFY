@@ -80,3 +80,9 @@ application.setAttribute("count", 1);
 ---
 
 ### Scope 표 정리
+| scope | 범위 | 유지 시간 | 사용 예 |
+| --- | --- | --- | --- |
+| page | 현재 JSP | 페이지 끝까지 | 거의 안씀 |
+| request | 요청 1번 | 응답까지 | 데이터 전달  |
+| session | 사용자 | 로그인 동안 | 로그인 |
+| application | 전체 | 서버 종료까지 | 전역 데이터 |
