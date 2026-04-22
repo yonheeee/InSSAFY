@@ -5,7 +5,7 @@
                       https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
   version="6.0">
 
-    <display-name>BACK_DB_WS_01_1</display-name>
+    <display-name>자동차관리시스템</display-name>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
