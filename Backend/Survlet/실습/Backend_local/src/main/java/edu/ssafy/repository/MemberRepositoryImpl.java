@@ -1,5 +1,8 @@
 package edu.ssafy.repository;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,6 +82,22 @@ public class MemberRepositoryImpl implements MemberRepository {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public void save() throws Exception {
+		ObjectOutputStream oos= new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("data.ser")));
+		oos.writeObject(list);
+		oos.close();
+	}
+
+	@Override
+	public void load() throws Exception {
+		ObjectOutputStream ois= new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("data.ser")));
+		List<MemberDto> list = (List<MemberDto>)((Object) ois).readObject();
+		this.list = list;
+		ois.close();
+		
 	}
 
 

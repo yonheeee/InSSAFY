@@ -63,4 +63,12 @@ public class MemberServiceImpl implements MemberService{
 		return false;
 	}
 
+	@Override
+	public void deleteIds(String[] ids) throws Exception {
+		for(String id:ids) {
+			repo.delete(id);
+		}
+		
+	}
+
 }

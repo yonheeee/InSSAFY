@@ -12,4 +12,5 @@ public interface MemberService {
 	public MemberDto select(String name) throws Exception;
 	public MemberDto selectOne(String id) throws Exception;
 	public boolean login(String id, String password) throws Exception;
+	public void deleteIds(String[] ids)throws Exception;
 }

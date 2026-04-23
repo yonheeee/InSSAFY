@@ -1,8 +1,9 @@
 package edu.ssafy.dto;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class MemberDto {
+public class MemberDto implements Serializable {
 	private String id;
 	private String password;
 	private String name;
