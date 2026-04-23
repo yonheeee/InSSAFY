@@ -2,11 +2,14 @@ package com.ssafy.ws.step1.servlet;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 
 import com.ssafy.ws.step1.dto.Car;
 
@@ -29,7 +32,7 @@ public class MainServelt extends HttpServlet {
 		process(request, response);
 	}
 
-	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		// request 객체에서 action파라미터 추출해서 실제 미지니스 로직을 추출
 		String action = request.getParameter("action");
 
@@ -38,7 +41,7 @@ public class MainServelt extends HttpServlet {
 		}
 		switch (action) {
 		case "regist":
-			deRegist(request, response);
+			doRegist(request, response);
 			break;
 		default:
 			response.setContentType("text/html; charset=UTF-8");
@@ -50,7 +53,7 @@ public class MainServelt extends HttpServlet {
 	 * 자동차 정보를 등록하기 위해 파라미터 잘 전달되는지 확인하고 화면에 출력 request에서 전달 받은 내용 추출 Car 객체 생성 후
 	 * response로 출력 특히 response시 content 형식 주의
 	 */
-	private void deRegist(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void doRegist(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		response.setContentType("text/html; charset=UTF-8");
 
 		try {
@@ -61,8 +64,30 @@ public class MainServelt extends HttpServlet {
 			// 문자열로 전달된 mileage는 숫자로 변환
 			int mileage = Integer.parseInt(request.getParameter("mileage"));
 
-			// 전달 받은 parameter이용해서 Car 객체 생성
+			//객체 생성
 			Car car = new Car(VIN, modelName, color, mileage);
+			
+			//세션에 지금까지 등록된 자동차 수 주장한다
+			HttpSession session = request.getSession();
+			
+			Integer carCount = (Integer)session.getAttribute("carCount");
+			if(carCount == null) {
+				carCount = 0;
+			}
+			carCount++;
+			session.setAttribute("carCount", carCount);
+			
+			//전달받은 파라미터 request에 담기
+			request.setAttribute("VIN", VIN);
+			request.setAttribute("modelName", modelName);
+			request.setAttribute("color", color);
+			request.setAttribute("mileage", mileage);
+			request.setAttribute("carCount", carCount);
+			
+			//JSP화면 호출을 위해 RequestDispatcher의 forward를 사용
+			RequestDispatcher disp = request.getRequestDispatcher("/regist_result.jsp");
+			disp.forward(request, response);
+			
 
 			StringBuilder output = new StringBuilder();
 			output.append("<html><body>").append("<h1>자동차 정보</h1>").append(car.toString()).append("</body></html>");
