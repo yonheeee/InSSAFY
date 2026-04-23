@@ -20,8 +20,9 @@
 			<input type="submit" value="눌러">
 		</form>
 		
-		<a href="/Backend_local/member?action=insertform">회원입력</a>
-		<a href="/Backend_local/member?action=select">회원조회</a>
+		<a href="/Backend_local/member?action=insertform">회원입력</a><br />
+		<a href="/Backend_local/member?action=select">회원조회</a><br />
+		<a href="/Backend_local/member?action=loginform">로그인</a><br />
 	</div>
 </body>
 </html>

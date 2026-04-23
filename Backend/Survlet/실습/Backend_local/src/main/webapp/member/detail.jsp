@@ -4,6 +4,7 @@
   <%
   MemberDto mem = (MemberDto)request.getAttribute("mem");
   %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,7 @@ function deletemember(){
 </head>
 <body>
 <div align="center">
+<%@ include file="/template/header.jsp" %>
 	<h1>회원상세</h1>
 	<form id="rform" action="/Backend_local/member?action=update" method="post">
 	
