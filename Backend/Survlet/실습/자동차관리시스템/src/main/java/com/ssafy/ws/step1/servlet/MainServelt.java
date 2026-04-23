@@ -2,6 +2,7 @@ package com.ssafy.ws.step1.servlet;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,7 +30,7 @@ public class MainServelt extends HttpServlet {
 		process(request, response);
 	}
 
-	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		// request 객체에서 action파라미터 추출해서 실제 미지니스 로직을 추출
 		String action = request.getParameter("action");
 
@@ -50,7 +51,7 @@ public class MainServelt extends HttpServlet {
 	 * 자동차 정보를 등록하기 위해 파라미터 잘 전달되는지 확인하고 화면에 출력 request에서 전달 받은 내용 추출 Car 객체 생성 후
 	 * response로 출력 특히 response시 content 형식 주의
 	 */
-	private void deRegist(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void deRegist(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		response.setContentType("text/html; charset=UTF-8");
 
 		try {
@@ -63,7 +64,18 @@ public class MainServelt extends HttpServlet {
 
 			// 전달 받은 parameter이용해서 Car 객체 생성
 			Car car = new Car(VIN, modelName, color, mileage);
-
+			
+			//전달 받은 파라미터 request에 담기
+			request.setAttribute("VIN", VIN);
+			request.setAttribute("modelName", modelName);
+			request.setAttribute("color", color);
+			request.setAttribute("mileage", mileage);
+			
+			// JSP 화면 호출을 위해 RequestDispatcher의 forward를 사용한다.
+			// 이때 연결할 jsp의 이름을 넘겨준다. forward에서는 /는 context root를 나타낸다.
+			RequestDispatcher disp = request.getRequestDispatcher("/regist_result.jsp");
+			disp.forward(request, response);
+			
 			StringBuilder output = new StringBuilder();
 			output.append("<html><body>").append("<h1>자동차 정보</h1>").append(car.toString()).append("</body></html>");
 			response.getWriter().write(output.toString());
