@@ -13,5 +13,5 @@ public interface MemberRepository {
 	public MemberDto selectOne(String id) throws Exception;
 	public MemberDto login(String id, String password) throws Exception;
 	public void save() throws Exception;
-	public List<MemberDto> load() throws Exception;
+	public void load() throws Exception;
 }

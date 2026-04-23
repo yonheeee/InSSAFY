@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +13,9 @@
 			<table border="1px; solid; #000;">
 				<tr>
 					<td>id</td>
-					<td><input type="text" name="id" /></td>
+					<td>
+					<input type="text" name="id" value="${cookie.saveid.value }"/>
+					<input type="checkbox" name="saveid" ${cookie.saveid.value != null ? 'checked' : '' } ><label>아이디저장</label></td>
 				</tr>
 				<tr>
 					<td>password</td>

@@ -25,7 +25,7 @@
 						<td>${mem.name }</td>
 						<td>${mem.age }</td>
 						<td>${mem.hobby[0] }</td>
-						<td><input type="chceckbox" name="delsid" value='${mem.id }'></td>
+						<td><input type="checkbox" name="delsid" value="${mem.id }"></td>
 					</tr>
 					</c:forEach>
 				<input type="submit" value="선택삭제" />
