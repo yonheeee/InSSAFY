@@ -4,11 +4,13 @@ import java.io.IOException;
 
 import com.ssafy.ws.step2.dto.Movie;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class MainServlet
@@ -31,7 +33,7 @@ public class MainServlet extends HttpServlet {
 		process(request,response);
 	}
 
-	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String action = request.getParameter("action");
 		
 		if(action == null) {
@@ -50,7 +52,7 @@ public class MainServlet extends HttpServlet {
 	}
 
 	private static int sequence = 1;
-	private void doregist(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void doregist(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		try {
@@ -63,9 +65,23 @@ public class MainServlet extends HttpServlet {
 			int id = sequence++;
 			Movie movie = new Movie(id, title, director, genre, runningTime);
 			
-			StringBuilder sb = new StringBuilder();
-			sb.append("<html><body>").append("<h1>영화 정보 입력</h1>").append(movie.toString()).append("</body></html>");
-			response.getWriter().write(sb.toString());
+			HttpSession session = request.getSession();
+			Integer movieCount = (Integer) session.getAttribute("movieCount");
+			
+			if(movieCount == null) {
+				movieCount = 0;
+			}
+			movieCount++;
+			
+			session.setAttribute("movieCount", movieCount);
+			request.setAttribute("title", title);
+			request.setAttribute("director", director);
+			request.setAttribute("genre", genre);
+			request.setAttribute("runningTime", runningTime);
+
+			RequestDispatcher disp = request.getRequestDispatcher("/regist_result.jsp");
+			disp.forward(request, response);
+			
 			
 		}catch(NumberFormatException e) {
 			response.getWriter().write("<html><body><h1>오류</h1><p>상영시간은 숫자로 입력해주세요</p></body></html>");

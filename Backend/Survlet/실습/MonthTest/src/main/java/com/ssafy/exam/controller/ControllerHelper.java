@@ -20,7 +20,7 @@ public interface ControllerHelper {
     }
     //TODO 1-1 : 정상적으로 리다이렉트 될 수 있도록 아래 메소드를 완성하시오.
     public default void redirect(HttpServletRequest request, HttpServletResponse response, String path) throws IOException {
-    	if(path.startsWith(path)) {
+    	if(path.startsWith(request.getContextPath())) {
     		response.sendRedirect(path);
     	}else {
     		response.sendRedirect(request.getContextPath() + path);

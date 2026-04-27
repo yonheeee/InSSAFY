@@ -10,8 +10,8 @@
 	<%@ include file="/header.jsp"%>
 	<div class="container">
 		<h1>로그인 페이지</h1>
-		<form action="#" method="">
-			
+		<form action="${root }/restaurant" method="post">
+			<input type="hidden" name="action" value="login">
 			<fieldset>
 
 			<div>
@@ -20,7 +20,7 @@
 				</div>
 				<div>
 				<label for="pass">비밀번호 </label>
-				<input type="password" id="pass" name="pass"/> <br>
+				<input type="password" id="pass" name="password"/> <br>
 				</div>
 				<div>
 					<label> <input type="checkbox" name="remember-me"> 아이디 기억하기

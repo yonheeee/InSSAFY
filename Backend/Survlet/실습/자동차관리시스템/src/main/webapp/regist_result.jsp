@@ -1,19 +1,18 @@
 <<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-=======
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
->>>>>>> 7b17fbba4bd746c51ad3e90a5036e13d140e51be
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
+
 <title>Insert title here</title>
 </head>
 <body>
 
-=======
 <title>자동차 등록 결과</title>
 <style>
 table {
@@ -63,6 +62,6 @@ th:nth-child(1) {
 	</table>
 	<!-- 다시 자동차를 등록할 수 있는 링크를 제공한다. -->
 	<a href="regist.jsp">추가등록</a>
->>>>>>> 7b17fbba4bd746c51ad3e90a5036e13d140e51be
+
 </body>
 </html>

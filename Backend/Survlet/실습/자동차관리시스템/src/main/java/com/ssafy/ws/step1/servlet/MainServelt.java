@@ -53,11 +53,9 @@ public class MainServelt extends HttpServlet {
 	 * 자동차 정보를 등록하기 위해 파라미터 잘 전달되는지 확인하고 화면에 출력 request에서 전달 받은 내용 추출 Car 객체 생성 후
 	 * response로 출력 특히 response시 content 형식 주의
 	 */
-<<<<<<< HEAD
-	private void deRegist(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-=======
+
 	private void doRegist(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
->>>>>>> 7b17fbba4bd746c51ad3e90a5036e13d140e51be
+
 		response.setContentType("text/html; charset=UTF-8");
 
 		try {
@@ -70,11 +68,9 @@ public class MainServelt extends HttpServlet {
 
 			//객체 생성
 			Car car = new Car(VIN, modelName, color, mileage);
-			
-<<<<<<< HEAD
+
 			//전달 받은 파라미터 request에 담기
-=======
-			//세션에 지금까지 등록된 자동차 수 주장한다
+     		//세션에 지금까지 등록된 자동차 수 주장한다
 			HttpSession session = request.getSession();
 			
 			Integer carCount = (Integer)session.getAttribute("carCount");
@@ -85,27 +81,22 @@ public class MainServelt extends HttpServlet {
 			session.setAttribute("carCount", carCount);
 			
 			//전달받은 파라미터 request에 담기
->>>>>>> 7b17fbba4bd746c51ad3e90a5036e13d140e51be
+
 			request.setAttribute("VIN", VIN);
 			request.setAttribute("modelName", modelName);
 			request.setAttribute("color", color);
 			request.setAttribute("mileage", mileage);
-<<<<<<< HEAD
+
 			
 			// JSP 화면 호출을 위해 RequestDispatcher의 forward를 사용한다.
 			// 이때 연결할 jsp의 이름을 넘겨준다. forward에서는 /는 context root를 나타낸다.
 			RequestDispatcher disp = request.getRequestDispatcher("/regist_result.jsp");
 			disp.forward(request, response);
 			
-=======
+
 			request.setAttribute("carCount", carCount);
 			
-			//JSP화면 호출을 위해 RequestDispatcher의 forward를 사용
-			RequestDispatcher disp = request.getRequestDispatcher("/regist_result.jsp");
-			disp.forward(request, response);
-			
 
->>>>>>> 7b17fbba4bd746c51ad3e90a5036e13d140e51be
 			StringBuilder output = new StringBuilder();
 			output.append("<html><body>").append("<h1>자동차 정보</h1>").append(car.toString()).append("</body></html>");
 			response.getWriter().write(output.toString());

@@ -59,6 +59,9 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			System.out.println("저장된 정보가 없습니다.");
 			members = Collections.synchronizedList(new ArrayList<>());
 			restaurants = Collections.synchronizedList(new ArrayList<>());
+		
+			reset(); 
+			restaurantReset();
 		}
 	}
 
@@ -102,6 +105,13 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	///////////////////////////////////////////////////////
 	@Override
 	public Member login(String email, String password) {
+		synchronized (members) {
+			for(Member member : members) {
+				if(member.getEmail().equals(email) && member.getPassword().equals(password)) {
+					return member;
+				}
+			}
+		}
 		return null;
 	}
 
@@ -133,11 +143,14 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
 	@Override
 	public int deleteByCode(String code) {
-		// TODO Auto-generated method stub
+		synchronized (restaurants) {
+			for(int i = 0; i < restaurants.size(); i++) {
+				if(restaurants.get(i).getCode().equals(code)) {
+					restaurants.remove(i);
+					return 1;
+				}
+			}
+		}
 		return 0;
 	}
-
-
-	
-
 }
