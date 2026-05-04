@@ -29,7 +29,7 @@
     - 모든 리프 노드까지의 탐색 깊이가 일정하여 일관된 성능을 보장
 - 각 노드가 자식 노드에 대한 포인터뿐만 아니라 실제 데이터를 함께 가질 수 있도록 설계된 탐색 트리
 
-![image.png](B-tree)
+![image.png](../../Image/B-tree.png)
 
 ### B+Tree
 
@@ -37,7 +37,7 @@
 - 데이터는 리프 노드에만 저장
 - 리프 노드는 연결리스트 형태로 연결 : Range Scan 최적
 
-![image.png](B+tree.png)
+![image.png](../../Image/B+tree.png)
 
 ### Clustered Index
 
@@ -48,7 +48,7 @@
 - Key가 record 저장 위치는 결정
 - 테이블당 단 하나만 존재 가능
 
-![image.png](ClusteredIndex.png)
+![image.png](../../Image/ClusteredIndex.png)
 
 ### Scondary Index
 
