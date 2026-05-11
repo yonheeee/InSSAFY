@@ -1,7 +1,8 @@
 # yonheeee InSSAFY
 
 ## Backend
-- [JSP](./Backend/JSP/)
+- [JSP](./Backend/Jsp/)
 - [Servlet](./Backend/Servlet)
 - [DataBase](./Backend/DataBase)
+- [SpringBoot](./Backend/SpringBoot)
 
