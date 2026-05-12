@@ -83,7 +83,7 @@ public interface HandlerAdapter {
 
 ### Spring@MVC 흐름
 
-![image.png](attachment:080b8755-b1df-4549-b795-e10e3ae3c702:image.png)
+![image.png](../../Image/springmvc.png)
 
 1. **Dispatcher Servlet이 요청을 받음**
     - 모든 HTTP 요청은 DispatcherServlet을 거침
